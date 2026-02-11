@@ -28,17 +28,61 @@ export default function Promises({ next, back }) {
   }, []);
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden text-white px-4 sm:px-6">
+    <div className="relative z-40 w-full h-screen flex items-center justify-center overflow-hidden text-white px-4 sm:px-6">
 
       {/* 🌌 Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/laiba-bg.jpg')" }}
       />
+
+      <div
+        className="absolute ml-16 mb-16 inset-0 z-20 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/pic-4.png')",
+          backgroundSize: "290px 450px",
+          backgroundPosition: "bottom left",
+          // rose-400 glow from bottom
+          filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+          borderRadius: "8px",
+        }}
+      />
+      <div
+        className="absolute  inset-0 z-19 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/floor.png')",
+          backgroundSize: "520px 260px",
+          backgroundPosition: "bottom left",
+          borderRadius: "8px",
+          filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.6))",
+        }}
+      />
+
+      <div
+        className="absolute mr-12 mb-10 inset-0 z-20 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/pic-5.png')",
+          backgroundSize: "330px 500px",
+          backgroundPosition: "bottom right",
+
+          filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+          borderRadius: "8px",
+        }}
+      />
+      <div
+        className="absolute mb-10  inset-0 z-19 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/floor.png')",
+          backgroundSize: "410px 140px",
+          backgroundPosition: "bottom right",
+          borderRadius: "8px",
+          filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.6))",
+        }}
+      />
       <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
 
       {/* ✨ Falling Particles */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-40 overflow-hidden pointer-events-none">
         {particles.map((p, i) => (
           <motion.span
             key={i}
@@ -67,7 +111,7 @@ export default function Promises({ next, back }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-[900px] h-[85vh] flex flex-col px-6 sm:px-10 py-6 sm:py-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,105,135,0.3)]"
+        className="relative z-40 w-full max-w-[900px] h-[85vh] flex flex-col px-6 sm:px-10 py-6 sm:py-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,105,135,0.3)]"
       >
         {/* Title */}
         <motion.h1
@@ -76,7 +120,7 @@ export default function Promises({ next, back }) {
           transition={{ duration: 1 }}
           className="text-2xl sm:text-4xl font-light text-softpink drop-shadow-[0_0_15px_rgba(255,182,193,0.7)] text-center mb-6"
         >
-          My Promises To You 
+          My Promises To You
         </motion.h1>
 
         {/* Promises List */}
@@ -89,7 +133,7 @@ export default function Promises({ next, back }) {
               transition={{ delay: i * 0.35, duration: 0.6, ease: "easeOut" }}
               className="mb-4 text-xs sm:text-base md:text-lg leading-relaxed tracking-wide"
             >
-               {text}
+              {text}
             </motion.p>
           ))}
 
@@ -113,7 +157,7 @@ export default function Promises({ next, back }) {
         </div>
 
         {/* Buttons */}
-        <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-3 w-full sm:w-[90%] mx-auto">
+        <div className="mt-4 z-40 sm:mt-6 flex flex-col sm:flex-row gap-3 w-full sm:w-[90%] mx-auto">
           {/* Back */}
           <motion.button
             onClick={back}

@@ -22,7 +22,7 @@ export default function HeartLock({ back, unlock }) {
   const triggerConfetti = () => {
     confetti({
       particleCount: window.innerWidth < 500 ? 90 : 140,
-      spread: 120,
+      spread: 200,
       origin: { y: 0.6 },
       colors: ["#ff6b87", "#ffb6c1", "#ff4d6d"],
     });

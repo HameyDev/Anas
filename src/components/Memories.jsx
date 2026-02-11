@@ -48,17 +48,19 @@ export default function Memories({ next, back }) {
   const [visibleCount, setVisibleCount] = useState(4);
   const canSlidePrev = startIndex > 0;
   const canSlideNext = startIndex + visibleCount < currentImages.length;
-  const slideWidth = containerRef.current?.offsetWidth / visibleCount || 0;
+
 
   useEffect(() => {
     const update = () => {
-      if (window.innerWidth < 640) setVisibleCount(2);
-      else setVisibleCount(4);
+      if (window.innerWidth < 640) setVisibleCount(1);     // mobile → 1 image
+      else if (window.innerWidth < 1024) setVisibleCount(2); // tablet → 2
+      else setVisibleCount(4); // desktop → 4
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
 
 
 
@@ -126,7 +128,7 @@ export default function Memories({ next, back }) {
               onClick={() => { setActiveSection(sec.id); setStartIndex(0); }}
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
-              className={`px-6 py-2 sm:px-8 sm:py-3 rounded-full font-medium capitalize text-xs sm:text-base transition-all duration-300
+              className={`px-4 py-2 sm:px-8 sm:py-3 rounded-full font-medium capitalize text-[10px] sm:text-base transition-all duration-300
                 border border-white/20 backdrop-blur-md
                 ${activeSection === sec.id
                   ? "bg-gradient-to-r from-rose-500 to-pink-400 text-white shadow-[0_0_20px_rgba(255,105,135,0.6)] hover:shadow-[0_0_30px_rgba(255,105,135,0.8)]"
@@ -151,35 +153,72 @@ export default function Memories({ next, back }) {
           </button>
 
           {/* Images Container */}
-          <div ref={containerRef} className="overflow-hidden w-[90%] px-2">
+          <div
+            ref={containerRef}
+            className="
+    overflow-hidden w-[90%] px-3 py-3
+    rounded-2xl
+    bg-white/[0.03]
+    border border-pink-300/20
+    backdrop-blur-md
+    shadow-[0_0_35px_rgba(255,105,135,0.25),inset_0_0_25px_rgba(255,105,135,0.08)]
+  "
+          >
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeSection}  // <-- key changes with section
+                key={activeSection}
                 className="flex gap-4"
                 initial={{ opacity: 0 }}
-                animate={{ x: -startIndex * slideWidth, opacity: 1 }}
+                animate={{
+                  x: `-${startIndex * (106 / visibleCount)}%`,
+                  opacity: 1,
+                }}
                 exit={{ opacity: 0 }}
-                transition={{ type: "spring", stiffness: 200, damping: 30 }}
+                transition={{ type: "tween", ease: "easeInOut", duration: 0.45 }}
               >
                 {currentImages.map((img) => (
                   <div
                     key={img.src}
-                    className="flex-shrink-0 w-[47%] sm:w-[23.5%] rounded-xl overflow-hidden cursor-pointer relative"
+                    className="
+            flex-shrink-0 w-full sm:w-[48%] md:w-[31%] lg:w-[23.5%]
+            rounded-xl overflow-hidden cursor-pointer relative
+            group
+          "
                     onClick={() => setSelectedImg(img)}
                   >
+                    {/* Image */}
                     <img
                       src={img.src}
                       alt={img.caption}
-                      className="w-full h-64 object-cover rounded-xl shadow-[0_0_30px_rgba(255,105,135,0.3)] transition-transform duration-300 hover:scale-105"
+                      className="
+              w-full h-64 object-cover rounded-xl
+              transition-all duration-400
+              group-hover:scale-[1.05]
+              shadow-[0_0_18px_rgba(255,105,135,0.35)]
+              group-hover:shadow-[0_0_35px_rgba(255,105,135,0.65)]
+            "
                     />
+
+                    {/* Soft Pink Glow Overlay */}
+                    <div className="
+            absolute inset-0 rounded-xl
+            opacity-0 group-hover:opacity-100
+            transition duration-400
+            bg-gradient-to-t from-pink-500/20 via-transparent to-transparent
+          " />
+
+                    {/* Caption */}
                     <div className="absolute bottom-0 w-full bg-black/25 backdrop-blur-md py-2 text-center rounded-b-xl">
-                      <p className="text-xs sm:text-sm text-white/90 font-medium">{img.caption}</p>
+                      <p className="text-xs sm:text-sm text-white/90 font-medium">
+                        {img.caption}
+                      </p>
                     </div>
                   </div>
                 ))}
               </motion.div>
             </AnimatePresence>
           </div>
+
 
           {/* Right Arrow */}
           <button

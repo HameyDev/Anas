@@ -21,8 +21,7 @@ you are my home,
 my dua,
 my forever.
 
-— Hamey ❤️
-`;
+— Hamey ❤️`;
 
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
@@ -62,7 +61,7 @@ my forever.
       <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
 
       {/* ✨ Falling Particles */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute z-50 inset-0 z-0 overflow-hidden pointer-events-none">
         {particles.map((p, i) => (
           <motion.span
             key={i}
@@ -91,7 +90,7 @@ my forever.
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-[1000px] h-[85vh] sm:h-[90vh] flex flex-col px-6 sm:px-10 py-6 sm:py-10 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,105,135,0.3)]"
+        className="relative z-40 w-full max-w-[1000px] h-[85vh] sm:h-[90vh] flex flex-col px-6 sm:px-10 py-6 sm:py-10 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,105,135,0.3)]"
       >
         {/* Header */}
         <div className="flex items-center justify-center mb-6 gap-3 flex-shrink-0">
@@ -100,6 +99,28 @@ my forever.
           </h1>
           <FaEnvelope className="text-2xl sm:text-3xl text-rose-400 drop-shadow-[0_0_15px_rgba(255,105,135,0.8)]" />
         </div>
+
+        <div
+          className="absolute mr-24 mb-28 inset-0 z-20 bg-no-repeat"
+          style={{
+            backgroundImage: "url('/pic-3.png')",
+            backgroundSize: "300px 470px",
+            backgroundPosition: "bottom right",
+
+            filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+            borderRadius: "8px",
+          }}
+        />
+        <div
+          className="absolute  ml-20 inset-0 z-19 bg-no-repeat"
+          style={{
+            backgroundImage: "url('/floor.png')",
+            backgroundSize: "490px 350px",
+            backgroundPosition: "bottom right",
+            borderRadius: "8px",
+            filter: "brightness(0.80) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.4))",
+          }}
+        />
 
         {/* Scrollable Typewriter Box */}
         <div
@@ -131,8 +152,8 @@ my forever.
         </div>
 
         {/* Buttons */}
-        <div className="mt-4 sm:mt-6 flex flex-col gap-2">
-  
+        <div className="mt-4 z-40 sm:mt-6 flex flex-col gap-2">
+
 
           {/* Exit My Heart */}
           <motion.button

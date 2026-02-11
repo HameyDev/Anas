@@ -33,10 +33,67 @@ export default function HeartDashboard({ openSection, exit }) {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: "url('/laiba-bg.jpg')" }}
             />
-            <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
+            <div
+                className="absolute ml-12 mb-16 inset-0 z-20 bg-no-repeat"
+                style={{
+                    backgroundImage: "url('/pic.png')",
+                    backgroundSize: "320px 500px",
+                    backgroundPosition: "bottom left",
+                    // rose-400 glow from bottom
+                    filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+                    borderRadius: "8px",
+                }}
+            />
+            <div
+                className="absolute  ml-8 inset-0 z-19 bg-no-repeat"
+                style={{
+                    backgroundImage: "url('/floor.png')",
+                    backgroundSize: "450px 220px",
+                    backgroundPosition: "bottom left",
+                    borderRadius: "8px",
+                    filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.6))",
+                }}
+            />
+
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background:
+                        "linear-gradient(to top, rgba(244,114,182,0.30), transparent 30%)",
+                    mixBlendMode: "screen", // try: overlay / soft-light / color
+                }}
+            />
+
+
+            <div
+                className="absolute mr-12 inset-0 z-20 bg-no-repeat"
+                style={{
+                    backgroundImage: "url('/pic-2.png')",
+                    backgroundSize: "400px 600px",
+                    backgroundPosition: "bottom right",
+
+                    filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+                    borderRadius: "8px",
+                }}
+            />
+            <div
+                className="absolute  ml-8 inset-0 z-19 bg-no-repeat"
+                style={{
+                    backgroundImage: "url('/floor.png')",
+                    backgroundSize: "600px 280px",
+                    backgroundPosition: "bottom right",
+                    borderRadius: "8px",
+                    filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.6))",
+                }}
+            />
+
+
+
+
+            <div className="absolute inset-0  bg-black/65 backdrop-blur-[2px]" />
 
             {/* ✨ RAINING PARTICLES */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 z-30 overflow-hidden pointer-events-none">
                 {particles.map((p, i) => (
                     <motion.span
                         key={i}
@@ -70,7 +127,7 @@ export default function HeartDashboard({ openSection, exit }) {
             <motion.div
                 animate={{ scale: [1, 1.01, 1] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                className="relative z-10 flex items-center justify-center"
+                className="relative z-50 flex items-center justify-center"
             >
                 <div className="relative w-[460px] sm:w-[520px] h-[440px] sm:h-[480px] flex items-center justify-center">
 

@@ -55,7 +55,7 @@ export default function Destiny({ next, back }) {
       <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
 
       {/* ✨ Falling Particles */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-20 z-0 overflow-hidden pointer-events-none">
         {particles.map((p, i) => (
           <motion.span
             key={i}
@@ -97,7 +97,7 @@ export default function Destiny({ next, back }) {
         </motion.h1>
 
         {/* Text Box */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left text-rose-100">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left text-rose-100">
           {displayedLines.map((line, i) => (
             <motion.p
               key={i}
