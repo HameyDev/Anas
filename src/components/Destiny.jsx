@@ -17,6 +17,13 @@ export default function Destiny({ next, back }) {
   ];
 
   const [displayedLines, setDisplayedLines] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640); // mobile < 640px
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // Typewriter-like reveal for lines
   useEffect(() => {
@@ -53,6 +60,50 @@ export default function Destiny({ next, back }) {
         style={{ backgroundImage: "url('/laiba-bg.jpg')" }}
       />
       <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
+
+      <div
+        className="absolute sm:ml-16 sm:mb-16 mb-[218px] ml-2 inset-0 z-50 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/pic-6.png')",
+          backgroundSize: isMobile ? "140px 230px" : "290px 450px",
+          backgroundPosition: "bottom left",
+          // rose-400 glow from bottom
+          filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+          borderRadius: "8px",
+        }}
+      />
+      <div
+        className="absolute ml-24  inset-0 z-19 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/floor.png')",
+          backgroundSize: isMobile ? "250px 380px" : "282px 250px",
+          backgroundPosition: "bottom left",
+          borderRadius: "8px",
+          filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.3))",
+        }}
+      />
+
+      <div
+        className="absolute sm:mr-20 sm:mb-16 mb-[225px] mr-6 inset-0 z-50 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/pic-7.png')",
+          backgroundSize: isMobile ? "130px 200px" : "290px 400px",
+          backgroundPosition: "bottom right",
+
+          filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+          borderRadius: "8px",
+        }}
+      />
+      <div
+        className="absolute mb-8  inset-0 z-19 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/floor.png')",
+          backgroundSize: isMobile ? "250px 300px" : "390px 120px",
+          backgroundPosition: "bottom right",
+          borderRadius: "8px",
+          filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.3))",
+        }}
+      />
 
       {/* ✨ Falling Particles */}
       <div className="absolute inset-0 z-20 z-0 overflow-hidden pointer-events-none">

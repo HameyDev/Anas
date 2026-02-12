@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { FaHeart } from "react-icons/fa";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 
 
 
@@ -12,6 +12,7 @@ export default function HeartDashboard({ openSection, exit }) {
         { name: "Promises I Made To You", id: "promises" },
         { name: "Our Written Destiny", id: "destiny" },
     ];
+    const [isMobile, setIsMobile] = useState(false);
 
     // create particles
     const particles = useMemo(() => {
@@ -24,6 +25,13 @@ export default function HeartDashboard({ openSection, exit }) {
         }));
     }, []);
 
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 640); // mobile < 640px
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+
 
     return (
         <div className="relative w-full h-screen flex items-center justify-center overflow-hidden text-white">
@@ -34,13 +42,13 @@ export default function HeartDashboard({ openSection, exit }) {
                 style={{ backgroundImage: "url('/laiba-bg.jpg')" }}
             />
             <div
-                className="absolute ml-12 mb-16 inset-0 z-20 bg-no-repeat"
+                className="absolute sm:ml-12 mb-16 inset-0 z-20 bg-no-repeat"
                 style={{
                     backgroundImage: "url('/pic.png')",
-                    backgroundSize: "320px 500px",
+                    backgroundSize: isMobile ? "180px 270px" : "320px 500px", // 📱 vs 💻
                     backgroundPosition: "bottom left",
-                    // rose-400 glow from bottom
-                    filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
+                    filter:
+                        "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))",
                     borderRadius: "8px",
                 }}
             />
@@ -66,10 +74,10 @@ export default function HeartDashboard({ openSection, exit }) {
 
 
             <div
-                className="absolute mr-12 inset-0 z-20 bg-no-repeat"
+                className="absolute sm:mr-12 mb-4 sm:mb-0 inset-0 z-20 bg-no-repeat"
                 style={{
                     backgroundImage: "url('/pic-2.png')",
-                    backgroundSize: "400px 600px",
+                    backgroundSize: isMobile ? "197px 350px" : "400px 600px",
                     backgroundPosition: "bottom right",
 
                     filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -127,12 +135,12 @@ export default function HeartDashboard({ openSection, exit }) {
             <motion.div
                 animate={{ scale: [1, 1.01, 1] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                className="relative z-50 flex items-center justify-center"
+                className="relative  z-50 mb-[180px] md:mb-0 flex items-center justify-center"
             >
-                <div className="relative w-[460px] sm:w-[520px] h-[440px] sm:h-[480px] flex items-center justify-center">
+                <div className="relative w-[450px] sm:w-[520px] h-[420px] sm:h-[480px] flex items-center justify-center">
 
                     {/* 💗 Big Transparent Heart Glow */}
-                    <FaHeart className="absolute text-[550px]  sm:text-[920px] text-rose-400/20 drop-shadow-[0_0_120px_rgba(255,120,150,0.25)]" />
+                    <FaHeart className="absolute text-[500px]  sm:text-[920px] text-rose-400/20 drop-shadow-[0_0_120px_rgba(255,120,150,0.25)]" />
 
                     {/* 💎 Glass Inner Area */}
                     <div className="relative w-[50%] h-[65%] sm:w-[78%] sm:h-[82%] sm:mb-24 mb-8 rounded-3xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-[0_0_80px_rgba(255,105,135,0.25)] flex flex-col items-center justify-center px-6 py-5">

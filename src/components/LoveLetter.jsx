@@ -25,6 +25,7 @@ my forever.
 
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Typewriter effect
   useEffect(() => {
@@ -36,6 +37,13 @@ my forever.
       return () => clearTimeout(timeout);
     }
   }, [index, fullText]);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640); // mobile < 640px
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // ✅ Falling particles configuration
   const particles = useMemo(() => {
@@ -94,17 +102,17 @@ my forever.
       >
         {/* Header */}
         <div className="flex items-center justify-center mb-6 gap-3 flex-shrink-0">
-          <h1 className="text-3xl sm:text-4xl font-light text-softpink drop-shadow-[0_0_15px_rgba(255,182,193,0.7)] tracking-wide text-center">
+          <h1 className="text-xl sm:text-4xl font-light text-softpink drop-shadow-[0_0_15px_rgba(255,182,193,0.7)] tracking-wide text-center">
             A Letter From My Heart
           </h1>
           <FaEnvelope className="text-2xl sm:text-3xl text-rose-400 drop-shadow-[0_0_15px_rgba(255,105,135,0.8)]" />
         </div>
 
         <div
-          className="absolute mr-24 mb-28 inset-0 z-20 bg-no-repeat"
+          className="absolute sm:mr-24 mr-4 sm:mb-28 mb-16 inset-0 z-20 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-3.png')",
-            backgroundSize: "300px 470px",
+            backgroundSize: isMobile ? "180px 300px" : "300px 470px",
             backgroundPosition: "bottom right",
 
             filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -115,7 +123,7 @@ my forever.
           className="absolute  ml-20 inset-0 z-19 bg-no-repeat"
           style={{
             backgroundImage: "url('/floor.png')",
-            backgroundSize: "490px 350px",
+            backgroundSize: isMobile ? "230px 250px" : "490px 350px",
             backgroundPosition: "bottom right",
             borderRadius: "8px",
             filter: "brightness(0.80) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.4))",

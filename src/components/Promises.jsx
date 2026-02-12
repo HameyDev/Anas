@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Promises({ next, back }) {
@@ -11,6 +11,15 @@ export default function Promises({ next, back }) {
     "I promise to grow with you, not without you",
     "I promise to love you — always, forever",
   ];
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640); // mobile < 640px
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   // Falling particles
   const particles = useMemo(() => {
@@ -37,10 +46,10 @@ export default function Promises({ next, back }) {
       />
 
       <div
-        className="absolute ml-16 mb-16 inset-0 z-20 bg-no-repeat"
+        className="absolute sm:ml-16 sm:mb-16 mb-[132px] ml-10 inset-0 z-50 bg-no-repeat"
         style={{
           backgroundImage: "url('/pic-4.png')",
-          backgroundSize: "290px 450px",
+          backgroundSize: isMobile ? "170px 280px" : "290px 450px",
           backgroundPosition: "bottom left",
           // rose-400 glow from bottom
           filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -51,7 +60,7 @@ export default function Promises({ next, back }) {
         className="absolute  inset-0 z-19 bg-no-repeat"
         style={{
           backgroundImage: "url('/floor.png')",
-          backgroundSize: "520px 260px",
+          backgroundSize: isMobile ? "250px 380px" : "520px 260px",
           backgroundPosition: "bottom left",
           borderRadius: "8px",
           filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.6))",
@@ -59,10 +68,10 @@ export default function Promises({ next, back }) {
       />
 
       <div
-        className="absolute mr-12 mb-10 inset-0 z-20 bg-no-repeat"
+        className="absolute sm:mr-12 sm:mb-10 mb-[130px] mr-6 inset-0 z-50 bg-no-repeat"
         style={{
           backgroundImage: "url('/pic-5.png')",
-          backgroundSize: "330px 500px",
+          backgroundSize: isMobile ? "180px 280px" : "330px 500px",
           backgroundPosition: "bottom right",
 
           filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -73,7 +82,7 @@ export default function Promises({ next, back }) {
         className="absolute mb-10  inset-0 z-19 bg-no-repeat"
         style={{
           backgroundImage: "url('/floor.png')",
-          backgroundSize: "410px 140px",
+          backgroundSize: isMobile ? "250px 300px"  : "410px 140px",
           backgroundPosition: "bottom right",
           borderRadius: "8px",
           filter: "brightness(0.95) drop-shadow(0 30px 10px rgba(244, 114, 182, 0.6))",
@@ -82,7 +91,7 @@ export default function Promises({ next, back }) {
       <div className="absolute inset-0 bg-black/65 backdrop-blur-[2px]" />
 
       {/* ✨ Falling Particles */}
-      <div className="absolute inset-0 z-40 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-50 overflow-hidden pointer-events-none">
         {particles.map((p, i) => (
           <motion.span
             key={i}
@@ -111,7 +120,7 @@ export default function Promises({ next, back }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative z-40 w-full max-w-[900px] h-[85vh] flex flex-col px-6 sm:px-10 py-6 sm:py-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,105,135,0.3)]"
+        className="relative sm:z-50 w-full max-w-[900px] h-[85vh] flex flex-col px-6 sm:px-10 py-6 sm:py-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl shadow-[0_0_80px_rgba(255,105,135,0.3)]"
       >
         {/* Title */}
         <motion.h1
@@ -124,7 +133,7 @@ export default function Promises({ next, back }) {
         </motion.h1>
 
         {/* Promises List */}
-        <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm  shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left text-rose-100">
+        <div className="flex-1 overflow-y-auto pt-20 sm:pt-0 flex flex-col items-center sm:justify-center text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm  shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left text-rose-100">
           {promises.map((text, i) => (
             <motion.p
               key={i}
@@ -157,7 +166,7 @@ export default function Promises({ next, back }) {
         </div>
 
         {/* Buttons */}
-        <div className="mt-4 z-40 sm:mt-6 flex flex-col sm:flex-row gap-3 w-full sm:w-[90%] mx-auto">
+        <div className="mt-4 z-60 sm:mt-6 flex flex-col sm:flex-row gap-3 w-full sm:w-[90%] mx-auto">
           {/* Back */}
           <motion.button
             onClick={back}
