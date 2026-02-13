@@ -106,10 +106,10 @@ export default function Destiny({ next, back }) {
         </motion.h1>
 
         <div
-          className="absolute sm:ml-0 sm:mb-28 mb-[80px] ml-2 inset-0 z-50 bg-no-repeat"
+          className="absolute sm:ml-0 sm:mb-28 mb-[88px] ml-4  inset-0 z-50 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-6.png')",
-            backgroundSize: isMobile ? "120px 210px" : "210px 320px",
+            backgroundSize: isMobile ? "118px 180px" : "210px 320px",
             backgroundPosition: "bottom left",
             // rose-400 glow from bottom
             filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -128,10 +128,10 @@ export default function Destiny({ next, back }) {
         />
 
         <div
-          className="absolute sm:mr-6 sm:mb-[120px] mb-[85px] mr-6 inset-0 z-50 bg-no-repeat"
+          className="absolute sm:mr-6 sm:mb-[120px] mb-[75px] mr-6 inset-0 z-50 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-7.png')",
-            backgroundSize: isMobile ? "120px 180px" : "200px 290px",
+            backgroundSize: isMobile ? "110px 209px" : "200px 290px",
             backgroundPosition: "bottom right",
 
             filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow

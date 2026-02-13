@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaEnvelope } from "react-icons/fa";
 
 export default function LoveLetter({ next, exit }) {
-  const fullText = `Laiba…
+  const fullText = `Esh…
 
 From the moment you came into my life, everything changed.
 
@@ -20,7 +20,7 @@ you are my home,
 my dua,
 my forever.
 
-Hamey ❤️`;
+Anas ❤️`;
 
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
@@ -108,10 +108,10 @@ Hamey ❤️`;
         </div>
 
         <div
-          className="absolute sm:mr-24 mr-4 sm:mb-28 mb-16 inset-0 z-20 bg-no-repeat"
+          className="absolute sm:mr-24 mr-6 sm:mb-28 mb-[65px] inset-0 z-20 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-3.png')",
-            backgroundSize: isMobile ? "180px 300px" : "250px 400px",
+            backgroundSize: isMobile ? "140px 250px" : "250px 400px",
             backgroundPosition: "bottom right",
 
             filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow

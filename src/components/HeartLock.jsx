@@ -16,8 +16,8 @@ export default function HeartLock({ back, unlock }) {
   const [secretKey, setSecretKey] = useState("");
   const [error, setError] = useState("");
 
-  const correct = { q1: "laiba", q2: "black", q3: "november" };
-  const correctKey = "laiba";
+  const correct = { q2: "black", q3: "Feb" };
+  const correctKey = "esh";
 
   const triggerConfetti = () => {
     confetti({
@@ -34,7 +34,6 @@ export default function HeartLock({ back, unlock }) {
 
   const checkAnswers = () => {
     if (
-      answers.q1.toLowerCase() === correct.q1 &&
       answers.q2.toLowerCase() === correct.q2 &&
       answers.q3.toLowerCase() === correct.q3
     ) {
@@ -158,7 +157,7 @@ export default function HeartLock({ back, unlock }) {
               Answer from your heart <FaHeart className="text-rose-400" />
             </p>
 
-            {["Who's my future wife?", "My favourite color?", "My Birth Month?"].map((ph, i) => (
+            {["My favourite color?", "My Birth Month?"].map((ph, i) => (
               <input
                 key={i}
                 placeholder={ph}
