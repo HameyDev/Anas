@@ -51,7 +51,7 @@ export default function HeartDashboard({ openSection, exit }) {
                 className="absolute sm:ml-12 mb-16 inset-0 z-20 bg-no-repeat"
                 style={{
                     backgroundImage: "url('/pic.png')",
-                    backgroundSize: isMobile ? "170px 250px" : "270px 400px", // 📱 vs 💻
+                    backgroundSize: isMobile ? "120px 200px" : "270px 400px", // 📱 vs 💻
                     backgroundPosition: "bottom left",
                     filter:
                         "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))",
@@ -83,7 +83,7 @@ export default function HeartDashboard({ openSection, exit }) {
                 className="absolute sm:mr-12 mb-16 sm:mb-0 inset-0 z-20 bg-no-repeat"
                 style={{
                     backgroundImage: "url('/pic-2.png')",
-                    backgroundSize: isMobile ? "170px 250px" : "300px 500px",
+                    backgroundSize: isMobile ? "120px 200px" : "300px 500px",
                     backgroundPosition: "bottom right",
 
                     filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
