@@ -14,6 +14,7 @@ export default function HeartDashboard({ openSection, exit }) {
     ];
     const [isMobile, setIsMobile] = useState(false);
 
+
     // create particles
     const particles = useMemo(() => {
         return Array.from({ length: 40 }).map(() => ({
