@@ -93,7 +93,7 @@ export default function Promises({ next, back }) {
           className="absolute sm:ml-12 sm:mb-[90px] mb-[80px] ml-6 inset-0 z-50 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-4.png')",
-            backgroundSize: isMobile ? "170px 240px" : "220px 325px",
+            backgroundSize: isMobile ? "130px 180px" : "220px 325px",
             backgroundPosition: "bottom left",
             // rose-400 glow from bottom
             filter: "brightness(0.82) drop-shadow(0 15px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -112,10 +112,10 @@ export default function Promises({ next, back }) {
         />
 
         <div
-          className="absolute sm:mr-12 sm:mb-[90px] mb-[68px] mr-6 inset-0 z-50 bg-no-repeat"
+          className="absolute sm:mr-12 sm:mb-[90px] mb-[70px] mr-6 inset-0 z-50 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-5.png')",
-            backgroundSize: isMobile ? "150px 282px" : "230px 325px",
+            backgroundSize: isMobile ? "110px 210px" : "230px 325px",
             backgroundPosition: "bottom right",
 
             filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -134,7 +134,7 @@ export default function Promises({ next, back }) {
         />
 
         {/* Promises List */}
-        <div className="flex-1 overflow-y-auto pt-20 sm:pt-8 flex flex-col items-center  text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm  shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left text-rose-100">
+        <div className="flex-1 overflow-y-auto pt-10 sm:pt-8 flex flex-col items-center  text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm  shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left text-rose-100">
           {promises.map((text, i) => (
             <motion.p
               key={i}

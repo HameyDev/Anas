@@ -108,10 +108,10 @@ Anas ❤️`;
         </div>
 
         <div
-          className="absolute sm:mr-24 mr-6 sm:mb-28 mb-[65px] inset-0 z-20 bg-no-repeat"
+          className="absolute sm:mr-24 mr-6 sm:mb-28 mb-[67px] inset-0 z-20 bg-no-repeat"
           style={{
             backgroundImage: "url('/pic-3.png')",
-            backgroundSize: isMobile ? "140px 250px" : "250px 400px",
+            backgroundSize: isMobile ? "100px 200px" : "250px 400px",
             backgroundPosition: "bottom right",
 
             filter: "brightness(0.82) drop-shadow(0 20px 15px rgba(244, 114, 182, 0.1))", // subtle glow
@@ -131,7 +131,7 @@ Anas ❤️`;
 
         {/* Scrollable Typewriter Box */}
         <div
-          className="flex-1 overflow-y-auto p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left whitespace-pre-line leading-relaxed text-sm sm:text-base md:text-xs text-rose-100"
+          className="flex-1 overflow-y-auto p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md shadow-[0_0_50px_rgba(255,105,135,0.25)] text-left whitespace-pre-line leading-relaxed text-xs sm:text-base md:text-xs text-rose-100"
           style={{
             scrollbarWidth: "thin",
             scrollbarColor: "rgba(255,105,135,0.8) transparent",

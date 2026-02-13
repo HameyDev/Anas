@@ -13,7 +13,7 @@ export default function Destiny({ next, back }) {
     "",
     "Not just today…",
     "Not just tomorrow…",
-    "But forever ❤️",
+    "But forever",
   ];
 
   const [displayedLines, setDisplayedLines] = useState([]);
@@ -157,7 +157,7 @@ export default function Destiny({ next, back }) {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-3 text-xs sm:text-base md:text-sm leading-relaxed tracking-wide text-center"
+              className="mb-3 text-[10px] sm:text-base md:text-sm leading-relaxed tracking-wide text-center"
             >
               {line || <span className="opacity-0">.</span>}
             </motion.p>
